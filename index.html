@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💼 Portafolio - Juan Sebastián Romero Cepeda</title>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { color: #e6edf3; background: black; overflow-x: hidden; }
+        h1, h2, h3 { color: #27de23; }
+        section { padding: 80px 20px; max-width: 1100px; margin: auto; position: relative; z-index: 2; }
+        a { color: #27de23; text-decoration: none; }
+        .btn { background: #27de23; padding: 10px 20px; border-radius: 8px; color: black; display: inline-block; transition: 0.3s; }
+        .btn:hover { background: #1a7c1a; color: white; }
+
+        header { position: fixed; top: 0; left: 0; width: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); z-index: 1000;
+                  display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; flex-wrap: wrap; }
+        header h1 { font-size: 1.2rem; color: #27de23; }
+        nav { display: flex; flex-wrap: wrap; gap: 15px; }
+        nav a { font-weight: bold; transition: 0.3s; }
+        nav a:hover { color: #1a7c1a; }
+
+        #hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        #hero img { width: 250px; height: 250px; border-radius: 50%; border: 3px solid #27de23; margin-bottom: 20px; }
+        #hero h1 { font-size: 2.5rem; }
+        #hero h2 { font-size: 1.5rem; margin-top: 10px; }
+
+        .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .card { background: rgba(20, 20, 20, 0.9); padding: 20px; border-radius: 10px; text-align: center; transition: 0.3s; }
+        .card img { width: 40px; height: 40px; margin-bottom: 10px; }
+        .card:hover { transform: translateY(-5px); background: rgba(39, 222, 35, 0.1); }
+
+        .proyecto { background: rgba(20,20,20,0.9); padding: 20px; border-radius: 10px; margin-bottom: 20px; transition: 0.3s; cursor: pointer; }
+        .proyecto:hover { transform: translateY(-5px); background: rgba(39, 222, 35, 0.1); }
+
+        .contacto-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 20px; }
+
+        footer { background: rgba(20,20,20,0.9); padding: 20px; text-align: center; color: #8b949e; z-index: 2; position: relative; }
+
+        #perfil, #vision, #mision, #habilidades, #competencias, #experiencia, #contacto {
+            background: rgba(20,20,20,0.9); border-radius: 10px; padding: 40px; margin-bottom: 30px;
+        }
+
+        @media(max-width: 900px) {
+          .grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media(max-width: 600px) {
+          #hero h1 { font-size: 1.8rem; }
+          #hero h2 { font-size: 1rem; }
+          .grid { grid-template-columns: 1fr; }
+        }
+
+        /* ======= CANVAS MATRIX ======= */
+        #matrix {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: black;
+        }
+
+        /* ======= PARTICULAS ======= */
+        #particles-js {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <!-- FONDO MATRIX -->
+    <canvas id="matrix"></canvas>
+    <!-- FONDO PARTICULAS -->
+    <div id="particles-js"></div>
+
+    <!-- HEADER -->
+    <header>
+        <h1>💻 Juan Romero</h1>
+        <nav>
+            <a href="#perfil" id="nav-perfil">Perfil</a>
+            <a href="#habilidades" id="nav-habilidades">Habilidades</a>
+            <a href="#experiencia" id="nav-proyectos">Proyectos</a>
+            <a href="#contacto" id="nav-contacto">Contacto</a>
+            <a href="mailto:juansebastianromerocepeda29@gmail.com">Email</a>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section id="hero">
+        <img src="foto perfil.jpg" alt="Foto perfil">
+        <h1 id="hero-name">Juan Sebastián Romero Cepeda</h1>
+        <h2 id="hero-role">Desarrollador de Software</h2>
+        <a href="#contacto" class="btn" style="margin-top:20px;" id="contact-btn">Contáctame</a>
+    </section>
+
+    <!-- PERFIL -->
+    <section id="perfil">
+        <h2 id="perfil-title">Perfil</h2>
+        <p id="perfil-text">Desarrollador de software con conocimiento de diversos lenguajes frontend y backend...</p>
+    </section>
+
+    <!-- VISION -->
+    <section id="vision">
+        <h2 id="vision-title">Visión</h2>
+        <p id="vision-text">Ser un desarrollador reconocido por la innovación y calidad en los proyectos...</p>
+    </section>
+
+    <!-- MISION -->
+    <section id="mision">
+        <h2 id="mision-title">Misión</h2>
+        <p id="mision-text">Desarrollar soluciones de software eficientes, creativas y sostenibles...</p>
+    </section>
+
+    <!-- HABILIDADES -->
+    <section id="habilidades">
+        <h2 id="habilidades-title">Habilidades Técnicas</h2>
+        <div class="grid">
+            <div class="card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"/><p>Python</p></div>
+            <div class="card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"/><p>JavaScript</p></div>
+            <div class="card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"/><p>MySQL</p></div>
+            <div class="card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg"/><p>C#</p></div>
+            <div class="card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"/><p>Git</p></div>
+            <div class="card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"/><p>CSS</p></div>
+            <div class="card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"/><p>HTML</p></div>
+            <div class="card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg"/><p>.NET</p></div>
+        </div>
+    </section>
+
+<section id="competencias">
+  <h2 id="competencias-title">Habilidades Blandas</h2>
+  <div class="grid">
+
+    <!-- Creatividad -->
+    <div class="card">
+      <img src="https://img.icons8.com/?size=100&id=121704&format=png&color=000000" alt="Creatividad" />
+      <p id="soft-skill-2">Creatividad</p>
+    </div>
+
+    <!-- Adaptabilidad -->
+    <div class="card">
+      <img src="https://img.icons8.com/?size=100&id=hX7g23k7bLLy&format=png&color=000000" alt="Adaptabilidad" />
+      <p id="soft-skill-3">Adaptabilidad</p>
+    </div>
+
+    <!-- Empatía -->
+    <div class="card">
+      <img src="https://img.icons8.com/?size=100&id=Rg6R2Z9I9HBN&format=png&color=000000" alt="Empatía" />
+      <p id="soft-skill-5">Empatía</p>
+    </div>
+
+    <!-- Comunicación -->
+    <div class="card">
+      <img src="https://img.icons8.com/?size=100&id=112795&format=png&color=000000" alt="Comunicación" />
+      <p id="soft-skill-6">Comunicación</p>
+    </div>
+
+    <!-- Trabajo en equipo -->
+    <div class="card">
+      <img src="https://img.icons8.com/?size=100&id=3VsU2VIjqBqZ&format=png&color=000000" alt="Trabajo en Equipo" />
+      <p id="soft-skill-8">Trabajo en Equipo</p>
+    </div>
+
+    <!-- Paciencia -->
+    <div class="card">
+      <img src="https://img.icons8.com/?size=100&id=ltKEI08nxweb&format=png&color=000000" alt="Paciencia" />
+      <p id="soft-skill-9">Paciencia</p>
+    </div>
+
+    <!-- Liderazgo -->
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Liderazgo" />
+      <p id="soft-skill-10">Liderazgo</p>
+    </div>
+  </div>
+</section>
+
+
+    <!-- EXPERIENCIA -->
+   <section id="experiencia">
+            <h2 id="proyectos-title">Proyectos</h2>
+        <div class="proyecto" onclick="window.open('https://github.com/Brxyden2007/Colombian_Coffee.git')">
+            <h3 id="proj-1-title">Colombian Coffee ☕ </h3>
+            <p id="proj-1-desc">Desarrollo de un programa mediante CSharp que simula un menú de cafés colombianos, en el cual se podrán generar PDFs y poder interactuar con el menú acerca de la información de los cafés y sus filtros (variedades, etc..)</p>
+        </div>
+        <div class="proyecto" onclick="window.open('https://github.com/JuanRomer0/ProyectoMySQL.git')">
+            <h3 id="proj-2-title">Plataforma de comercializacion digital 💼 </h3>
+            <p id="proj-2-desc">Diseño e implementación de un sistema de gestión de bases de datos relacional en MySQL para una plataforma digital de comercialización de productos y servicios, contemplando la administración de clientes, empresas, productos, evaluaciones, membresías, beneficios y ubicaciones geográficas, con enfoque escalable y modular.</p>
+        </div>
+    </section>
+
+
+    <!-- CONTACTO -->
+    <section id="contacto">
+        <h2 id="contacto-title">Contacto</h2>
+        <div class="contacto-links">
+            <a href="https://www.linkedin.com/in/juan-sebastian-romero-cepeda-7944ba339" target="_blank" class="btn">LinkedIn 💼</a>
+            <a href="https://github.com/JuanRomer0" target="_blank" class="btn">GitHub 😺</a>
+            <a href="mailto:juansebastianromerocepeda29@gmail.com" class="btn">Email 📧</a>
+            <a href="https://www.canva.com/design/DAGvxdbEmP8/se-oKNKZBwpoFfxr8CVuUQ/edit?utm_content=DAGvxdbEmP8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="btn">Hdv 📋</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p id="footer-text">© 2025 - Desarrollado por Juan Sebastián Romero Cepeda. El futuro se programa una línea a la vez.</p>
+    </footer>
+
+    <!-- SCRIPT MATRIX -->
+    <script>
+        const canvas = document.getElementById("matrix");
+        const ctx = canvas.getContext("2d");
+        canvas.height = window.innerHeight;
+        canvas.width = window.innerWidth;
+
+        const chars = "01";
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+
+        function draw() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#27de23";
+            ctx.font = fontSize + "px monospace";
+            for (let i = 0; i < drops.length; i++) {
+                const text = chars.charAt(Math.floor(Math.random() * chars.length));
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
+            }
+        }
+        setInterval(draw, 50);
+
+        window.addEventListener("resize", () => {
+            canvas.height = window.innerHeight;
+            canvas.width = window.innerWidth;
+        });
+    </script>
+
+    <!-- SCRIPT PARTICULAS -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {"value": 100},
+                "size": {"value": 3},
+                "move": {"speed": 2},
+                "line_linked": {"enable": true, "distance": 150, "color": "#27de23"},
+                "color": {"value": "#27de23"}
+            }
+        });
+    </script>
+</body>
+</html>
+
