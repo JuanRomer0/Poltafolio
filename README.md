@@ -1,6 +1,6 @@
-# Poltafolio
+## 💼 Poltafolio
 
-Este repositorio contiene mi **portafolio personal** en desarrollo. Aquí mostraré mis proyectos, habilidades y lo que he aprendo como desarrollador web.
+Este repositorio contiene mi **portafolio personal** en desarrollo. Aquí mostraré habilidades y lo que he aprendo como desarrollador web asi como intentare implementar alguna que otra cosa extra.
 
 ---
 
@@ -49,6 +49,7 @@ Poltafolio/
 └ /js ← Scripts interactivos
 
 ## 💻 visualizacion de la pag
+https://poltafolio.netlify.app/
 
 ## 📅 Próximos pasos
 
